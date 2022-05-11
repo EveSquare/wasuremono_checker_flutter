@@ -45,69 +45,69 @@ class _MyWidgetState extends State<MyWidget> {
     final ButtonStyle style =
         TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Flexible(
-              child: Image.asset(
-                "assets/images/sun.gif",
-                height: 30,
+        appBar: AppBar(
+          title: Row(
+            children: [
+              Flexible(
+                child: Image.asset(
+                  "assets/images/sun.gif",
+                  height: 30,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: const [
-                  Text(
-                    '最高:$high°',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 13,
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: const [
+                    Text(
+                      "やや曇り",
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 13,
+                      ),
                     ),
-                  ),
-                  Text(
-                    '最低:$low°',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 13,
+                    Text(
+                      '最高:$high° 最低:$low°',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 13,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+            ],
+          ),
+          actions: <Widget>[
+            if (mute == true)
+              IconButton(
+                icon: const Icon(Icons.volume_mute),
+                tooltip: 'mute',
+                color: Colors.black,
+                onPressed: () {
+                  toggleMute();
+                },
+              ),
+            if (mute == false)
+              IconButton(
+                icon: const Icon(Icons.volume_up),
+                tooltip: 'volume',
+                color: Colors.black,
+                onPressed: () {
+                  toggleMute();
+                },
+              ),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              tooltip: 'settings',
+              color: Colors.black,
+              onPressed: () {},
             ),
           ],
+          elevation: 0,
+          backgroundColor: Colors.white,
         ),
-        actions: <Widget>[
-          if (mute == true)
-            IconButton(
-              icon: const Icon(Icons.volume_mute),
-              tooltip: 'mute',
-              color: Colors.black,
-              onPressed: () {
-                toggleMute();
-              },
-            ),
-          if (mute == false)
-            IconButton(
-              icon: const Icon(Icons.volume_up),
-              tooltip: 'volume',
-              color: Colors.black,
-              onPressed: () {
-                toggleMute();
-              },
-            ),
-          IconButton(
-            icon: const Icon(Icons.settings),
-            tooltip: 'settings',
-            color: Colors.black,
-            onPressed: () {},
-          ),
-        ],
-        backgroundColor: Colors.white,
-      ),
-      body: const Center(
-        child: Text("Main"),
-      ),
-    );
+        body: const Scaffold(
+          backgroundColor: Color.fromRGBO(222, 231, 244, 100),
+        ));
   }
 }
