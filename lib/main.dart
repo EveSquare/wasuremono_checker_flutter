@@ -37,6 +37,9 @@ class _MyWidgetState extends State<MyWidget> {
     });
   }
 
+  static const String high = "21";
+  static const String low = "10";
+
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style =
@@ -45,14 +48,32 @@ class _MyWidgetState extends State<MyWidget> {
       appBar: AppBar(
         title: Row(
           children: [
-            Column(
-              children: const [
-                Text(
-                  "wasuremono checker",
-                  style: TextStyle(color: Colors.black, fontSize: 17),
-                ),
-                Text("wasuremono checker"),
-              ],
+            Flexible(
+              child: Image.asset(
+                "assets/images/sun.gif",
+                height: 30,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: const [
+                  Text(
+                    '最高:$high°',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 13,
+                    ),
+                  ),
+                  Text(
+                    '最低:$low°',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 13,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
