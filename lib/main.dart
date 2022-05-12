@@ -56,23 +56,33 @@ class _MyWidgetState extends State<MyWidget> {
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: const [
-                    Text(
-                      "やや曇り",
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 13,
+                child: SizedBox(
+                  width: 150,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: const Text(
+                          "やや曇り",
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 13,
+                          ),
+                        ),
                       ),
-                    ),
-                    Text(
-                      '最高:$high° 最低:$low°',
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 13,
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: const Text(
+                          '最高:$high° 最低:$low°',
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 13,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
