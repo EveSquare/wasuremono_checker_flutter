@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'dart:io';
 
 void main() {
   runApp(const MyApp());
@@ -237,7 +239,78 @@ class _MyWidgetState extends State<MyWidget> {
             const SizedBox(height: 25),
             ElevatedButton(
               style: style,
-              onPressed: () {},
+              onPressed: () {
+                showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(32.0),
+                      ),
+                    ),
+                    content: SizedBox(
+                      height: height * 0.4,
+                      child: Column(
+                        children: <Widget>[
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Stack(
+                                alignment: Alignment.bottomRight,
+                                children: [
+                                  Image.asset("assets/images/bearDance.png"),
+                                  const Text(
+                                    "©くま趣味",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const Text(
+                                "いってらっしゃい",
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(-2.0, 2.0),
+                                      blurRadius: 3.0,
+                                      color: Color.fromARGB(103, 0, 0, 0),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              elevation: 1,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                              ),
+                              minimumSize: Size(width * 0.7, height * 0.05),
+                            ),
+                            onPressed: () => {
+                              if (Platform.isAndroid)
+                                {SystemNavigator.pop()}
+                              else
+                                {exit(0)}
+                            },
+                            child: const Text(
+                              "OK",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
               child: const Text(
                 "持った!",
                 style: TextStyle(
