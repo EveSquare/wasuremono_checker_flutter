@@ -161,7 +161,7 @@ class _MyWidgetState extends State<MyWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(25.0),
               child: Container(
                 width: subContentWidth,
                 height: subContentHeight,
@@ -184,7 +184,7 @@ class _MyWidgetState extends State<MyWidget> {
               width: mainContentWidth,
               height: mainContentHeight,
               decoration: BoxDecoration(
-                color: Colors.blue[200],
+                color: Colors.blue[100],
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Container(
@@ -193,6 +193,26 @@ class _MyWidgetState extends State<MyWidget> {
                   "時計",
                   style: TextStyle(
                     fontSize: 38,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Container(
+                width: subContentWidth,
+                height: subContentHeight,
+                decoration: BoxDecoration(
+                  color: Colors.blue[100],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Container(
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "財布",
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
                   ),
                 ),
               ),
