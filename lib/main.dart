@@ -133,10 +133,18 @@ class _MyWidgetState extends State<MyWidget> {
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    double mainContentWidth = width * 0.8;
+    double mainContentWidth = width * 0.85;
     double mainContentHeight = height * 0.1;
     double subContentWidth = width * 0.72;
     double subContentHeight = height * 0.075;
+
+    final ButtonStyle style = ElevatedButton.styleFrom(
+      elevation: 1,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      minimumSize: Size(width * 0.6, height * 0.08),
+    );
 
     return Container(
       width: width,
@@ -146,77 +154,98 @@ class _MyWidgetState extends State<MyWidget> {
       ),
       child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              getNow(),
-              style: const TextStyle(
-                fontSize: 30,
-              ),
-            ),
-            Text(
-              "文化の日",
-              style: TextStyle(
-                color: Colors.red[400],
-                fontSize: 22,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: Container(
-                width: subContentWidth,
-                height: subContentHeight,
-                decoration: BoxDecoration(
-                  color: Colors.blue[100],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Container(
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "マナカ",
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
+            Column(
+              children: [
+                Text(
+                  getNow(),
+                  style: const TextStyle(
+                    fontSize: 30,
                   ),
                 ),
-              ),
-            ),
-            Container(
-              width: mainContentWidth,
-              height: mainContentHeight,
-              decoration: BoxDecoration(
-                color: Colors.blue[100],
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Container(
-                alignment: Alignment.center,
-                child: const Text(
-                  "時計",
+                Text(
+                  "文化の日",
                   style: TextStyle(
-                    fontSize: 38,
+                    color: Colors.red[400],
+                    fontSize: 22,
                   ),
                 ),
-              ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: Container(
-                width: subContentWidth,
-                height: subContentHeight,
-                decoration: BoxDecoration(
-                  color: Colors.blue[100],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Container(
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "財布",
-                    style: TextStyle(
-                      fontSize: 30,
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Container(
+                    width: subContentWidth,
+                    height: subContentHeight,
+                    decoration: BoxDecoration(
+                      color: Colors.blue[100],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: const Text(
+                        "マナカ",
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
+                Container(
+                  width: mainContentWidth,
+                  height: mainContentHeight,
+                  decoration: BoxDecoration(
+                    color: Colors.blue[100],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: const Text(
+                      "時計",
+                      style: TextStyle(
+                        fontSize: 38,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Container(
+                    width: subContentWidth,
+                    height: subContentHeight,
+                    decoration: BoxDecoration(
+                      color: Colors.blue[100],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: const Text(
+                        "財布",
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
+            const SizedBox(height: 25),
+            ElevatedButton(
+              style: style,
+              onPressed: () {},
+              child: const Text(
+                "持った!",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35,
+                ),
+              ),
+            )
           ],
         ),
       ),
