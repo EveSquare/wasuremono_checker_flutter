@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 void main() {
@@ -43,8 +44,6 @@ class _MyWidgetState extends State<MyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style =
-        TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -121,31 +120,85 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  Center _buildBody() {
+  Container _buildBody() {
+    initializeDateFormatting('ja');
     String getNow() {
       DateTime now = DateTime.now();
-      DateFormat Outformat = DateFormat("yyyy年MM月dd日");
-      String date = Outformat.format(now);
-      return date;
+      DateFormat outFormat = DateFormat("yyyy年MM月dd日");
+      DateFormat dayOfWeekFormat = DateFormat.E('ja');
+      String dayOfWeek = dayOfWeekFormat.format(now);
+      String date = outFormat.format(now);
+      return "$date($dayOfWeek)";
     }
 
-    return Center(
-      child: Column(
-        children: [
-          Text(
-            getNow(),
-            style: const TextStyle(
-              fontSize: 30,
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double mainContentWidth = width * 0.8;
+    double mainContentHeight = height * 0.1;
+    double subContentWidth = width * 0.72;
+    double subContentHeight = height * 0.075;
+
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: Colors.blue[50],
+      ),
+      child: Center(
+        child: Column(
+          children: [
+            Text(
+              getNow(),
+              style: const TextStyle(
+                fontSize: 30,
+              ),
             ),
-          ),
-          Text(
-            "文化の日",
-            style: TextStyle(
-              color: Colors.red[400],
-              fontSize: 22,
+            Text(
+              "文化の日",
+              style: TextStyle(
+                color: Colors.red[400],
+                fontSize: 22,
+              ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: subContentWidth,
+                height: subContentHeight,
+                decoration: BoxDecoration(
+                  color: Colors.blue[100],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Container(
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "マナカ",
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              width: mainContentWidth,
+              height: mainContentHeight,
+              decoration: BoxDecoration(
+                color: Colors.blue[200],
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Container(
+                alignment: Alignment.center,
+                child: const Text(
+                  "時計",
+                  style: TextStyle(
+                    fontSize: 38,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
