@@ -4,6 +4,9 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'dart:io';
 
+import 'package:flutter_application_1/widget/child_content.dart';
+import 'package:flutter_application_1/widget/main_content.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -133,12 +136,11 @@ class _MyWidgetState extends State<MyWidget> {
       return "$date($dayOfWeek)";
     }
 
+    String todayText = "文化の日";
+    List<String> parsonalEffects = ["マナカ", "時計", "財布"];
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    double mainContentWidth = width * 0.85;
-    double mainContentHeight = height * 0.1;
-    double subContentWidth = width * 0.72;
-    double subContentHeight = height * 0.075;
 
     final ButtonStyle style = ElevatedButton.styleFrom(
       elevation: 1,
@@ -167,7 +169,7 @@ class _MyWidgetState extends State<MyWidget> {
                   ),
                 ),
                 Text(
-                  "文化の日",
+                  todayText,
                   style: TextStyle(
                     color: Colors.red[400],
                     fontSize: 22,
@@ -179,59 +181,17 @@ class _MyWidgetState extends State<MyWidget> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(25.0),
-                  child: Container(
-                    width: subContentWidth,
-                    height: subContentHeight,
-                    decoration: BoxDecoration(
-                      color: Colors.blue[100],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: const Text(
-                        "マナカ",
-                        style: TextStyle(
-                          fontSize: 30,
-                        ),
-                      ),
-                    ),
+                  child: ChildContentWidget(
+                    contentText: parsonalEffects[0],
                   ),
                 ),
-                Container(
-                  width: mainContentWidth,
-                  height: mainContentHeight,
-                  decoration: BoxDecoration(
-                    color: Colors.blue[100],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "時計",
-                      style: TextStyle(
-                        fontSize: 38,
-                      ),
-                    ),
-                  ),
+                MainContentWidget(
+                  contentText: parsonalEffects[1],
                 ),
                 Padding(
                   padding: const EdgeInsets.all(25.0),
-                  child: Container(
-                    width: subContentWidth,
-                    height: subContentHeight,
-                    decoration: BoxDecoration(
-                      color: Colors.blue[100],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: const Text(
-                        "財布",
-                        style: TextStyle(
-                          fontSize: 30,
-                        ),
-                      ),
-                    ),
+                  child: ChildContentWidget(
+                    contentText: parsonalEffects[2],
                   ),
                 ),
               ],
